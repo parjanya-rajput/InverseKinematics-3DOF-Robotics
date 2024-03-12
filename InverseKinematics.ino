@@ -10,7 +10,6 @@ Servo wrist_ver;
 Servo gripper;
 
 
-
 double l1 = 7.15; 
 double l2 = 12.5; 
 double l3 = 12.5;
@@ -72,7 +71,9 @@ void loop() {
     double phirad = deg2rad(phi);
     inversekinematics(x3, y3, phirad);
 
-    Braccio.ServoMovement(20, 0, abs(180-theta_1), abs(180-theta_2), abs(180-theta_3), 0,  73);
+    delay(1000);
+
+    Braccio.ServoMovement(20, 0, theta_1, theta_2, theta_3, 0,  73);
 
     delay(5000); 
 }
