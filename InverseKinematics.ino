@@ -48,6 +48,15 @@ void inversekinematics(double x3, double y3, double phi) {
 
         theta_3 = phi - theta_1 - theta_2;
 
+        if(theta_1 < 0){
+          theta_1 = 180 + theta_1;
+        }
+        if(theta_2 < 5){
+          theta_2 = deg2rad(phi) + theta_2;
+        }
+        if(theta_3 < 0){
+          theta_3 = deg2rad(phi) + theta_3;
+        }
         Serial.print("Theta-1: ");
         Serial.println(rad2deg(theta_1));
         Serial.print("Theta-2: ");
@@ -75,5 +84,5 @@ void loop() {
 
     Braccio.ServoMovement(20, 0, theta_1, theta_2, theta_3, 0,  73);
 
-    delay(5000); 
+    delay(2); 
 }
