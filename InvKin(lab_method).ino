@@ -8,6 +8,7 @@ float L3 = 125;
 float theta_A = 0;
 float theta_B = 0;
 float theta_C = 0;
+float modulo = 180;
 
 Servo base;
 Servo shoulder;
@@ -79,21 +80,41 @@ void setup() {
 
 void loop() {
 
-    while (Serial.available() == 0) {
-    }
+    // while (Serial.available() == 0) {
+    // }
 
-    float X_input = Serial.parseInt();
-    float Y_input =  Serial.parseInt();
-    float theta_input = Serial.parseInt(); 
+    float X_input = 17;
+    float Y_input =  10;
+    float theta_input = 90; 
     
 
     theta_input = deg2rad(theta_input);
 
-    inverseKinematics(X_input, Y_input, theta_input);
+    inverseKinematics(X_input, Y_input, theta_input); 
 
     delay(1000);
 
-    Braccio.ServoMovement(20, 0, theta_A, theta_B, theta_C, 0,  73);
+    // if(theta_A < 0){
+    //   theta_A = -theta_A;
+    // }
+    // if(theta_B < 0){
+    //   theta_B = -theta_A;
+    // }
+    // if(theta_C < 0){
+    //   theta_C = -theta_A;
+    // }
+
+    // theta_A = theta_A % modulo;
+    // theta_B = theta_B % modulo;
+    // theta_C = theta_C % modulo;
+    
+    // Serial.print("Theta-1: ");
+    // Serial.println(rad2deg(theta_A));
+    // Serial.print("Theta-2: ");
+    // Serial.println(rad2deg(theta_B));
+    // Serial.print("Theta-3: ");
+    // Serial.println(rad2deg(theta_C));
+    // Braccio.ServoMovement(20, 0, 90, 90, 90, 0,  73);
 
     delay(1000);
 }
